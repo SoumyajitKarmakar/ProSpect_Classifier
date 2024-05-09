@@ -160,6 +160,7 @@ class CrossAttention(nn.Module):
         self.heads = heads
 
         self.to_q = nn.Linear(query_dim, inner_dim, bias=False)
+        # print(f"the contex dim is {context_dim},{inner_dim}" )      #Ankit
         self.to_k = nn.Linear(context_dim, inner_dim, bias=False)
         self.to_v = nn.Linear(context_dim, inner_dim, bias=False)
 

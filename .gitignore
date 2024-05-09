@@ -1,0 +1,33 @@
+models/
+outputs/
+# Ignore models directory
+/models/
+
+# Ignore outputs directory
+/outputs/
+
+# Ignore Python virtual environment
+.venv/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+# Ignore Python bytecode cache
+__pycache__/
+
+/ProSpect_Classifier/logs
+
+/ProSpect_Classifier/data
+ProSpect_Classifier/class_embeddings_file/
+ProSpect_Classifier/error_dict/
+ProSpect_Classifier/class_embeddings_50_actual.pth
+ProSpect_Classifier/class_embeddings_actual_try1.pth
+ProSpect_Classifier/class_embeddings_actual.pth
+ProSpect_Classifier/embedding_path.json
+ProSpect_Classifier/random_class_embeddings.pth
+ProSpect_Classifier/novel.json
+wandb/
+condition.pth
