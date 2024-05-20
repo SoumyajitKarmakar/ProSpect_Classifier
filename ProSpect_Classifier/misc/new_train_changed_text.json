@@ -1,0 +1,26 @@
+{
+    "label_names": [
+        "Alder_Flycatcher_bird",
+        "Connecticut_Warbler_bird",
+        "Cordilleran_Flycatcher_bird",
+        "Dusky_Flycatcher_bird",
+        "Gray_Flycatcher_bird",
+        "Gray_cheeked_Thrush_bird",
+        "Hammonds_Flycatcher_bird",
+        "Least_Flycatcher_bird",
+        "Sayornis_bird",
+        "Yellow_bellied_Flycatcher_bird"
+    ],
+    "labels_idx": [
+        5,
+        54,
+        56,
+        68,
+        88,
+        89,
+        97,
+        124,
+        183,
+        236
+    ]
+}

@@ -33,4 +33,4 @@ ProSpect_Classifier/novel.json
 logs/
 wandb/
 condition.pth
-ProSpect_Classifier/misc/
+# ProSpect_Classifier/misc/
