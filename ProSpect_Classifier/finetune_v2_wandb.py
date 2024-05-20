@@ -16,6 +16,8 @@ from dataloaders.dataloaders_for_classifier import Dataloader_classifier
 import os
 from sam import SAM
 
+from pytorch_lightning import seed_everything
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # inference_file = "val_bird_images/train.json"  # Path for training file
 # embedding_path = "ProSpect_Classifier/class_embeddings_50_actual.pth"
@@ -239,6 +241,8 @@ def train(model, train_loader, embedding_path, wandb_config=None):
 
 
 if __name__ == "__main__":
+
+    seed_everything(11)
 
     wandb.login()
 
