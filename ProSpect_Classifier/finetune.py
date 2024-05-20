@@ -20,6 +20,7 @@ import datetime
 from collections import defaultdict
 import random
 
+from pytorch_lightning import seed_everything
 
 from einops import rearrange, repeat
 
@@ -27,10 +28,10 @@ from einops import rearrange, repeat
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 # inference_file = "birds_images/val.json"  ### what inference file we are using
 # inference_file = "ProSpect_Classifier/data/CUB'/test/novel.json"  ### what inference file we are using
-inference_file = "/home/soumyajit/Project(-1)/ProSpect_main/data_let_it_wag/novel.json"  ### what inference file we are using
+inference_file = "/home/soumyajit/ProSpect_Classifier/ProSpect_Classifier/misc/new_test.json"  ### what inference file we are using
 
-json_file = "ProSpect_Classifier/class_embeddings_file/liw_100_0.05/error_dict.json"
-log_file = "ProSpect_Classifier/class_embeddings_file/liw_100_0.05/accuracy.txt"
+json_file = "/home/soumyajit/ProSpect_Classifier/ProSpect_Classifier/class_embeddings_file/liw_10_worst_birds_finetune_noaug/70_error_dict.json"
+log_file = "/home/soumyajit/ProSpect_Classifier/ProSpect_Classifier/class_embeddings_file/liw_10_worst_birds_finetune_noaug/70_accuracy.txt"
 
 
 ### Loading the model to the config
@@ -297,6 +298,8 @@ def load_class_embeddings(model):
 
 def main():
 
+    seed_everything(11)
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--to_keep", nargs="+", type=int, required=True)
     parser.add_argument("--n_samples", nargs="+", type=int, required=True)
@@ -333,7 +336,7 @@ def main():
     ## Load the model
 
     config = "configs/stable-diffusion/v1-inference.yaml"
-    ckpt = "models/sd/sd-v1-4.ckpt"
+    ckpt = "/home/soumyajit/Project(-1)/Pretrained_weights/sd/sd-v1-4.ckpt"
     config = OmegaConf.load(f"{config}")
     model = load_model_from_config(config, f"{ckpt}")
     model = model.to(device)
@@ -352,7 +355,7 @@ def main():
     # class_embeddings = load_class_embeddings(model)  #Ankit
     class_embeddings = torch.load(
         # "ProSpect_Classifier/class_embeddings_file/l2+C_7_sam_class/random_class_embeddings_l2+C_24.pth"
-        "/home/soumyajit/Project(-1)/ProSpect_main/ProSpect_Classifier/class_embeddings_file/liw_100_0.05/random_class_embeddings_l2+C_99.pth"
+        "/home/soumyajit/ProSpect_Classifier/ProSpect_Classifier/class_embeddings_file/liw_10_worst_birds_finetune_noaug/random_class_embeddings_l2+C_69.pth"
     )
 
     ## Define the optimizers, loss

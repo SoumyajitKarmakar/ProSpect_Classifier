@@ -25,8 +25,11 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # )
 # embedding_path = "ProSpect_Classifier/class_embeddings_actual_try1.pth"
 
-inference_file = "/home/soumyajit/Project(-1)/ProSpect_main/novel_let_it_wag/train.json"  # Path for training file
-embedding_path = "/home/soumyajit/Project(-1)/ProSpect_main/ProSpect_Classifier/class_embeddings_file/let_it_wag_50_embeddings_ProSpect/let_it_wag_50.pth"
+# inference_file = "/home/soumyajit/Project(-1)/DATASETS/novel_let_it_wag/train.json"  # Path for training file
+# embedding_path = "/home/soumyajit/ProSpect_Classifier/ProSpect_Classifier/class_embeddings_file/let_it_wag_50_embeddings_ProSpect/let_it_wag_50.pth"
+
+inference_file = "/home/soumyajit/ProSpect_Classifier/ProSpect_Classifier/misc/new_train_changed.json"  # Path for training file
+embedding_path = "/home/soumyajit/ProSpect_Classifier/ProSpect_Classifier/misc/liw_10_worst_birds.pth"
 
 torch.autograd.set_detect_anomaly(True)
 
@@ -86,9 +89,15 @@ def train(model, train_loader, embedding_path, wandb_config=None):
     wandb_config["epochs"] = args.epochs
     wandb_config["learning_rate"] = args.lr
 
+    # wandb.init(
+    #     project="Hyperparameter tuning",
+    #     name="liw_" + str(args.epochs) + "_" + str(args.lr),
+    #     config=wandb_config,
+    # )
+
     wandb.init(
         project="Hyperparameter tuning",
-        name="liw_" + str(args.epochs) + "_" + str(args.lr),
+        name="liw_10_worst_birds_finetune_noaug",
         config=wandb_config,
     )
 
@@ -267,7 +276,7 @@ if __name__ == "__main__":
     train_loader = None
 
     config = "configs/stable-diffusion/v1-inference.yaml"
-    ckpt = "models/sd/sd-v1-4.ckpt"
+    ckpt = "/home/soumyajit/Project(-1)/Pretrained_weights/sd/sd-v1-4.ckpt"
     config = OmegaConf.load(f"{config}")
     model = load_model_from_config(config, f"{ckpt}")
     model = model.to(device)

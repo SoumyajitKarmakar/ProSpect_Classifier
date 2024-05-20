@@ -29,5 +29,8 @@ ProSpect_Classifier/class_embeddings_actual.pth
 ProSpect_Classifier/embedding_path.json
 ProSpect_Classifier/random_class_embeddings.pth
 ProSpect_Classifier/novel.json
+
+logs/
 wandb/
 condition.pth
+ProSpect_Classifier/misc/

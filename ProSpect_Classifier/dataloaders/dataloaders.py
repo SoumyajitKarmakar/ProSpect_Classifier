@@ -71,30 +71,30 @@ class SetDataManager(DataManager):
     def get_data_loader(self, data_file):
         # parameters that would change on train/val set
 
-        # transform_test = transforms.Compose(
-        #     [
-        #         transforms.Resize(
-        #             (self.image_size, self.image_size)
-        #         ),  # Specify your desired height and width
-        #         transforms.ToTensor(),
-        #     ]
-        # )  # Ankit
-
         transform_test = transforms.Compose(
             [
-                transforms.Resize((self.image_size, self.image_size)),
-                # Specify your desired height and width
-                transforms.RandomHorizontalFlip(p=0.5),
-                transforms.RandomVerticalFlip(p=0.5),
-                transforms.RandomRotation(degrees=(-10, 10)),
-                transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),
-                transforms.RandomAffine(degrees=0, shear=(-10, 10)),
+                transforms.Resize(
+                    (self.image_size, self.image_size)
+                ),  # Specify your desired height and width
                 transforms.ToTensor(),
-                transforms.Normalize(
-                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
-                ),
             ]
         )  # Ankit
+
+        # transform_test = transforms.Compose(
+        #     [
+        #         transforms.Resize((self.image_size, self.image_size)),
+        #         # Specify your desired height and width
+        #         transforms.RandomHorizontalFlip(p=0.5),
+        #         transforms.RandomVerticalFlip(p=0.5),
+        #         transforms.RandomRotation(degrees=(-10, 10)),
+        #         transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),
+        #         transforms.RandomAffine(degrees=0, shear=(-10, 10)),
+        #         transforms.ToTensor(),
+        #         transforms.Normalize(
+        #             mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+        #         ),
+        #     ]
+        # )  # Ankit
 
         dataset = SetDataset(
             data_file, self.batch_size, self.num_aug, transform_test
